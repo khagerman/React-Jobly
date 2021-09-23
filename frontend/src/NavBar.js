@@ -14,7 +14,7 @@ function NavBar({ currentUser, logout }) {
           <NavLink to="/Jobs">Jobs</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/profile">{`${currentUser.userName} Profile `}</NavLink>
+          <NavLink to="/profile">{`${currentUser.username} Profile `}</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/" onClick={logout}>
@@ -36,7 +36,7 @@ function NavBar({ currentUser, logout }) {
       </>
     );
   }
-
+  console.log(currentUser, "hey");
   return (
     <div>
       <Navbar

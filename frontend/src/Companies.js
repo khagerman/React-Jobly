@@ -7,17 +7,17 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import CardBox from "./CompanyBox";
 import Search from "./Search";
 import JoblyApi from "./api";
 function Companies({ companies, setCos }) {
-  console.log(companies);
   async function search(searchTerm) {
     setCos(await JoblyApi.searchCompanies(searchTerm));
   }
   //   TODO fix
   //   if (!companies) return <h3>Loading...</h3>;
+
   return (
     <>
       <h2>Companies</h2>

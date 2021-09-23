@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-const Profile = ({ setSignUp }) => {
+const Profile = ({ currentUser, updateUser }) => {
   const history = useHistory();
   // TODO WHERE TO SEND DATA
-  const [formData, setFormData] = useState([
-    {
-      username: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-    },
-  ]);
+  console.log(currentUser);
+
+  const [formData, setFormData] = useState({
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
+    email: currentUser.email,
+    username: currentUser.username,
+    password: "",
+  });
+
   // add item and reset form
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setSignUp(formData);
+    updateUser(currentUser.username, formData);
     console.log(formData);
     history.push("/companies");
   };
@@ -32,7 +33,7 @@ const Profile = ({ setSignUp }) => {
 
   return (
     <div>
-      <h1>Signup</h1>
+      <h1>{currentUser.username}</h1>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="username">Username:</Label>
@@ -41,20 +42,10 @@ const Profile = ({ setSignUp }) => {
             id="username"
             name="username"
             value={formData.username}
-            onChange={handleChange}
-            required
+            disabled
           />
         </FormGroup>
-        <FormGroup>
-          <Label htmlFor="password">Password:</Label>
-          <Input
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </FormGroup>
+
         <FormGroup>
           <Label htmlFor="firstName">First name:</Label>
           <Input
@@ -86,10 +77,19 @@ const Profile = ({ setSignUp }) => {
             required
           />
         </FormGroup>
-        <Button color="link">Sign Up!</Button>
+        <FormGroup>
+          <Label htmlFor="password">Enter password to make changes:</Label>
+          <Input
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </FormGroup>
+        <Button color="warning">Edit Profile</Button>
       </Form>
     </div>
   );
 };
-
 export default Profile;

@@ -8,14 +8,16 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import CardBox from "./CompanyBox";
 import Search from "./Search";
 import JoblyApi from "./api";
 import JobCard from "./JobCard";
+
 function Jobs() {
   const [jobs, setJobs] = useState([]);
-
+  const history = useHistory();
+  let userToken = localStorage.getItem("token") || null;
   useEffect(() => {
     async function getData() {
       let jobs = await JoblyApi.getJobs();

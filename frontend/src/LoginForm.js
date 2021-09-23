@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const LoginForm = ({ login }) => {
   const history = useHistory();
-  // TODO WHERE TO SEND DATA
+  // TODO why does it only work second time?
   const [formData, setFormData] = useState({ username: "", password: "" });
   // add item and reset form
   async function handleSubmit(evt) {
@@ -48,7 +48,7 @@ const LoginForm = ({ login }) => {
           />
         </FormGroup>
 
-        <Button color="link">Login!</Button>
+        <Button color="info">Login!</Button>
       </Form>
     </div>
   );
