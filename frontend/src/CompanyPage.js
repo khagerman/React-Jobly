@@ -12,7 +12,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import JobCard from "./JobCard";
 
-function CompanyPage() {
+function CompanyPage({ apply, currentUser }) {
   let { handle } = useParams();
 
   const [co, setCo] = useState(null);
@@ -33,7 +33,14 @@ function CompanyPage() {
       <h6>{co.description}</h6>
       <div>
         {co.jobs.map((job) => (
-          <JobCard title={job.title} salary={job.salary} equity={job.equity} />
+          <JobCard
+            apply={apply}
+            title={job.title}
+            salary={job.salary}
+            equity={job.equity}
+            id={job.id}
+            currentUser={currentUser}
+          />
         ))}
       </div>
     </>

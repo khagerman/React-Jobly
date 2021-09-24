@@ -14,10 +14,11 @@ import Search from "./Search";
 import JoblyApi from "./api";
 import JobCard from "./JobCard";
 
-function Jobs() {
+function Jobs({ apply, currentUser }) {
   const [jobs, setJobs] = useState([]);
   const history = useHistory();
-  let userToken = localStorage.getItem("token") || null;
+  // todo update
+
   useEffect(() => {
     async function getData() {
       let jobs = await JoblyApi.getJobs();
@@ -40,6 +41,9 @@ function Jobs() {
         <div>
           {jobs.map((job) => (
             <JobCard
+              currentUser={currentUser}
+              id={job.id}
+              apply={apply}
               title={job.title}
               salary={job.salary}
               equity={job.equity}

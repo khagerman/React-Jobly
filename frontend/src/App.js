@@ -12,23 +12,26 @@ import LoginForm from "./LoginForm";
 import JoblyApi from "./api";
 import CompanyPage from "./CompanyPage";
 import jwt from "jsonwebtoken";
+import useLocalStorage from "./hooks/useLocalStorage";
+
+// TODO ADD NOTIFICATIONS /FEEDBACK
 function App() {
-  let userToken = localStorage.getItem("token") || null;
   const [cos, setCos] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useLocalStorage("token");
+  // const [appliedJobs, setApplied] = useState(new Set([]));
   useEffect(() => {
     async function currentUser() {
-      if (userToken) {
-        let { username } = jwt.decode(userToken);
-        JoblyApi.token = userToken;
+      if (token) {
+        let { username } = jwt.decode(token);
+        JoblyApi.token = token;
         let current = await JoblyApi.getUser(username);
         setCurrentUser(current);
         console.log(`currentUser is ${currentUser}`);
       }
     }
     currentUser();
-  }, [userToken, token]);
+  }, [token]);
   useEffect(() => {
     async function getData() {
       let companies = await JoblyApi.getCompanies();
@@ -37,28 +40,30 @@ function App() {
     getData();
   }, []);
   async function signUp(data) {
-    let tokenKey = await JoblyApi.signup(data);
-    setToken(tokenKey);
-    JSON.stringify(localStorage.setItem("token", tokenKey));
+    let token = await JoblyApi.signup(data);
+    setToken(token);
   }
 
   async function login(data) {
-    let tokenKey = await JoblyApi.login(data);
-    setToken(tokenKey);
-    JSON.stringify(localStorage.setItem("token", tokenKey));
+    let token = await JoblyApi.login(data);
+    setToken(token);
   }
 
   async function logOut() {
     setCurrentUser(null);
     setToken(null);
     localStorage.clear();
-    JoblyApi.token = null;
   }
   function updateProfile(username, data) {
     JoblyApi.update = (username, data);
     setCurrentUser(data);
   }
-
+  async function apply(id) {
+    let updatedUser = (JoblyApi.apply = (currentUser.username, id));
+    setCurrentUser(updatedUser);
+    // console.log(currentUser.applications);
+    // setApplied(new Set([...appliedJobs, id]));
+  }
   return (
     // TODO put in seperate route
     <div className="App">
@@ -76,30 +81,34 @@ function App() {
             <Route exact path="/signup">
               <SignUpForm signUp={signUp} />
             </Route>
-            {userToken ? (
+            {token ? (
               <Route exact path="/companies/:handle">
-                <CompanyPage cantFind="/companies" />
+                <CompanyPage
+                  currentUser={currentUser}
+                  apply={apply}
+                  cantFind="/companies"
+                />
               </Route>
             ) : (
               <Redirect to="/login" />
             )}
-            {userToken ? (
+            {token ? (
               <Route path="/profile">
                 <Profile updateUser={updateProfile} currentUser={currentUser} />
               </Route>
             ) : (
               <Redirect to="/login" />
             )}
-            {userToken ? (
+            {token ? (
               <Route exact path="/companies">
                 <Companies companies={cos} setCos={setCos} />
               </Route>
             ) : (
               <Redirect to="/login" />
             )}
-            {userToken ? (
+            {token ? (
               <Route exact path="/jobs">
-                <Jobs />
+                <Jobs currentUser={currentUser} apply={apply} />
               </Route>
             ) : (
               <Redirect to="/login" />

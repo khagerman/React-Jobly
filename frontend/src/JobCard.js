@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, CardText, CardTitle, Button, CardBody } from "reactstrap";
 
-function JobCard({ title, salary, equity }) {
+function JobCard({ apply, id, title, salary, equity, currentUser }) {
+  // todo this works
+  console.log(currentUser);
+  // todo But this doesn't
+  let jobs = currentUser.applications;
+
   return (
     <div>
       <Card>
@@ -18,9 +23,15 @@ function JobCard({ title, salary, equity }) {
             <br></br>
             Equity: {equity}
           </CardText>
-          {/* <CardLink href="#">Card Link</CardLink>
-          <CardLink href="#">Another Link</CardLink> */}
-          <Button>Apply</Button>
+          {jobs.indexOf(id) === -1 ? (
+            <Button className="success" onClick={() => apply(id)}>
+              Apply
+            </Button>
+          ) : (
+            <Button className="success" disabled={true}>
+              Applied!
+            </Button>
+          )}
         </CardBody>
       </Card>
     </div>
