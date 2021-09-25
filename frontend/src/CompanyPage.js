@@ -26,7 +26,7 @@ function CompanyPage({ apply, currentUser }) {
     getData();
   }, [handle]);
   console.log(co);
-  if (!co) return <h3>Loading...</h3>;
+  if (!co || !currentUser.application) return <h3>Loading...</h3>;
   return (
     <>
       <h2>{co.name}</h2>

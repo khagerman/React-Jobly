@@ -3,10 +3,10 @@ import { Card, CardText, CardTitle, Button, CardBody } from "reactstrap";
 
 function JobCard({ apply, id, title, salary, equity, currentUser }) {
   // todo this works
-  console.log(currentUser);
-  // todo But this doesn't
-  let jobs = currentUser.applications;
 
+  // // todo But this doesn't
+  let jobs = currentUser.applications;
+  console.log(jobs);
   return (
     <div>
       <Card>
@@ -23,13 +23,13 @@ function JobCard({ apply, id, title, salary, equity, currentUser }) {
             <br></br>
             Equity: {equity}
           </CardText>
-          {jobs.indexOf(id) === -1 ? (
-            <Button className="success" onClick={() => apply(id)}>
-              Apply
+          {jobs.length && jobs.includes(id) ? (
+            <Button color="success" disabled={true}>
+              Applied!
             </Button>
           ) : (
-            <Button className="success" disabled={true}>
-              Applied!
+            <Button color="success" onClick={() => apply(id)}>
+              Apply
             </Button>
           )}
         </CardBody>

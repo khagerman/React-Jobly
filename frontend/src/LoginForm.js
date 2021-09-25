@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const LoginForm = ({ login }) => {
   const history = useHistory();
-  // TODO why does it only work second time?
+
   const [formData, setFormData] = useState({ username: "", password: "" });
   // add item and reset form
   async function handleSubmit(evt) {

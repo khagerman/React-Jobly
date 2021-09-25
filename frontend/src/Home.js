@@ -2,7 +2,6 @@ import React from "react";
 import { Card, CardBody, CardTitle, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 function Home({ currentUser }) {
-  console.log(currentUser, "curent");
   return (
     <section className="container">
       <Card>

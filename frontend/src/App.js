@@ -18,18 +18,25 @@ import useLocalStorage from "./hooks/useLocalStorage";
 function App() {
   const [cos, setCos] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [infoLoaded, setInfoLoaded] = useState(false);
   const [token, setToken] = useLocalStorage("token");
   // const [appliedJobs, setApplied] = useState(new Set([]));
   useEffect(() => {
     async function currentUser() {
       if (token) {
-        let { username } = jwt.decode(token);
-        JoblyApi.token = token;
-        let current = await JoblyApi.getUser(username);
-        setCurrentUser(current);
-        console.log(`currentUser is ${currentUser}`);
+        try {
+          let { username } = jwt.decode(token);
+          JoblyApi.token = token;
+          let currentUser = await JoblyApi.getUser(username);
+          setCurrentUser(currentUser);
+        } catch (err) {
+          console.error("App loadUserInfo: problem loading", err);
+          setCurrentUser(null);
+        }
       }
+      setInfoLoaded(true);
     }
+    setInfoLoaded(false);
     currentUser();
   }, [token]);
   useEffect(() => {
@@ -59,11 +66,12 @@ function App() {
     setCurrentUser(data);
   }
   async function apply(id) {
-    let updatedUser = (JoblyApi.apply = (currentUser.username, id));
+    let updatedUser = await JoblyApi.apply(currentUser.username, id);
     setCurrentUser(updatedUser);
     // console.log(currentUser.applications);
     // setApplied(new Set([...appliedJobs, id]));
   }
+  if (!infoLoaded) return <h3 className="info">Loading...</h3>;
   return (
     // TODO put in seperate route
     <div className="App">
