@@ -13,7 +13,7 @@ import CardBox from "../Companies/CompanyBox";
 import Search from "../Search";
 import JoblyApi from "../api";
 import JobCard from "./JobCard";
-import "./Center.css";
+import "../Center.css";
 
 function Jobs({ apply, currentUser }) {
   const [jobs, setJobs] = useState([]);

@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, CardBody, CardTitle, Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import "./Center.css";
+import "../Center.css";
 import "./Home.css";
-import logo from "./logo.svg";
+import logo from "../logo.svg";
 function Home({ currentUser }) {
   return (
     <div className="Home Center">
