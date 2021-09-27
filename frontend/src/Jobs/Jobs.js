@@ -9,9 +9,9 @@ import {
   ListGroupItem,
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import CardBox from "./CompanyBox";
-import Search from "./Search";
-import JoblyApi from "./api";
+import CardBox from "../Companies/CompanyBox";
+import Search from "../Search";
+import JoblyApi from "../api";
 import JobCard from "./JobCard";
 import "./Center.css";
 

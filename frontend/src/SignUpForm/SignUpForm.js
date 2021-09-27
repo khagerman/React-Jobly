@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import "./Center.css";
+import "../Center.css";
 import "./SignUpForm.css";
 const SignUpForm = ({ signUp }) => {
   const history = useHistory();

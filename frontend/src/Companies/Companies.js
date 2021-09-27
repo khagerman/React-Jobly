@@ -9,8 +9,8 @@ import {
 } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 import CardBox from "./CompanyBox";
-import Search from "./Search";
-import JoblyApi from "./api";
+import Search from "../Search";
+import JoblyApi from "../api";
 function Companies({ companies, setCos }) {
   async function search(searchTerm) {
     setCos(await JoblyApi.searchCompanies(searchTerm));

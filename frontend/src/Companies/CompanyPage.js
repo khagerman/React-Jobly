@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import JoblyApi from "./api";
+import JoblyApi from "../api";
 import {
   Card,
   CardBody,
@@ -10,7 +10,7 @@ import {
   ListGroupItem,
 } from "reactstrap";
 import { Link, useParams } from "react-router-dom";
-import JobCard from "./JobCard";
+import JobCard from "../Jobs/JobCard";
 
 function CompanyPage({ apply, currentUser }) {
   let { handle } = useParams();
