@@ -19,21 +19,25 @@ function Companies({ companies, setCos }) {
   //   if (!companies) return <h3>Loading...</h3>;
 
   return (
-    <>
-      <h2>Companies</h2>
+    <div className="container text-center">
+      <h1>Companies</h1>
       <Search search={search} />
       {companies.length !== 0 ? (
         <div>
           {companies.map((co) => (
-            <Link to={`/companies/${co.handle}`} key={co.handle}>
-              <CardBox name={co.name} description={co.description} />
-            </Link>
+            <div className="m-4" key={co.handle}>
+              <CardBox
+                name={co.name}
+                description={co.description}
+                handle={co.handle}
+              />
+            </div>
           ))}
         </div>
       ) : (
         <p className="lead">Sorry, no results were found!</p>
       )}
-    </>
+    </div>
   );
 }
 export default Companies;

@@ -17,8 +17,8 @@ function Search({ search }) {
   }
 
   return (
-    <div>
-      <form className="form-inline" onSubmit={handleSubmit}>
+    <form className="form-inline" onSubmit={handleSubmit}>
+      <div className="form-group">
         <input
           className="form-control"
           name="searchTerm"
@@ -26,11 +26,13 @@ function Search({ search }) {
           value={formData}
           onChange={handleChange}
         />
-        <button type="submit" className="btn btn-lg btn-info">
+      </div>
+      <div>
+        <button type="submit" className="m-2 btn btn-info">
           Search
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 

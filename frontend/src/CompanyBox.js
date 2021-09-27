@@ -10,14 +10,17 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function CompanyBox({ name, description }) {
+function CompanyBox({ name, handle, description }) {
   return (
     <>
       <section>
-        <Card>
+        <Card className="mb-5">
           <CardBody>
-            <CardTitle className="font-weight-bold text-center">
-              {name}
+            <CardTitle className="h4 font-weight-bold text-muted text-center">
+              <Link className="stretched-link" to={`/companies/${handle}`}>
+                {" "}
+                {name}
+              </Link>
             </CardTitle>
             <CardText className="font-italic">{description}</CardText>
           </CardBody>

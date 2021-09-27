@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Home from "./Home";
 import Companies from "./Companies";
@@ -13,6 +14,7 @@ import JoblyApi from "./api";
 import CompanyPage from "./CompanyPage";
 import jwt from "jsonwebtoken";
 import useLocalStorage from "./hooks/useLocalStorage";
+import "./bootstrap.css";
 
 // TODO ADD NOTIFICATIONS /FEEDBACK
 function App() {

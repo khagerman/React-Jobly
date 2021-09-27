@@ -1,33 +1,37 @@
 import React from "react";
 import { Card, CardBody, CardTitle, Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import "./Center.css";
+import "./Home.css";
 function Home({ currentUser }) {
   return (
-    <section className="container">
-      <Card>
-        <CardBody className="text-center">
-          <CardTitle>
-            <h3 className="font-weight-bold">
-              All the jobs in one, convenient place.
-            </h3>
+    <div className="Home Center">
+      <div className="container text-center">
+        <Card>
+          <CardBody className="text-center">
+            <CardTitle>
+              <h1 className="display-1 mb-4">Jobly</h1>
+            </CardTitle>
+
+            <h3>All the jobs in one, convenient place.</h3>
             {!currentUser ? (
-              <>
-                <Button color="info">
-                  {/* <Link to={`/add/${groupName}`}>Add to Menu</Link> */}
+              <div>
+                <Link to={`/signup`} className="btn btn-info">
                   Sign Up
-                </Button>
-                <Button color="info">
+                </Link>
+                <Link className="btn btn-info m-3" to={`/login`}>
                   Login
-                  {/* <Link to={`/add/${groupName}`}>Add to Menu</Link> */}
-                </Button>
-              </>
+                </Link>
+              </div>
             ) : (
-              <h3 className="lead">Welcome Back, {currentUser.username}</h3>
+              <h3 className="lead p-3">
+                Welcome Back, {currentUser.username}!
+              </h3>
             )}
-          </CardTitle>
-        </CardBody>
-      </Card>
-    </section>
+          </CardBody>
+        </Card>
+      </div>
+    </div>
   );
 }
 

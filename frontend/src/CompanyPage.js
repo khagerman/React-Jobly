@@ -26,11 +26,11 @@ function CompanyPage({ apply, currentUser }) {
     getData();
   }, [handle]);
   console.log(co);
-  if (!co || !currentUser.application) return <h3>Loading...</h3>;
+  if (!co) return <h3>Loading...</h3>;
   return (
-    <>
+    <div className="container text-center p-2">
       <h2>{co.name}</h2>
-      <h6>{co.description}</h6>
+      <h6 className="text-muted pb-2">{co.description}</h6>
       <div>
         {co.jobs.map((job) => (
           <JobCard
@@ -43,7 +43,7 @@ function CompanyPage({ apply, currentUser }) {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 export default CompanyPage;

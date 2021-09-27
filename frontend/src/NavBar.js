@@ -1,54 +1,64 @@
 import React from "react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
 
 function NavBar({ currentUser, logout }) {
   function loggedInNav() {
     return (
       <>
-        <NavItem>
-          <NavLink to="/companies">Companies</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/Jobs">Jobs</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/profile">{`${currentUser.username} Profile `}</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/" onClick={logout}>
-            Log Out
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/companies">
+            Companies
           </NavLink>
-        </NavItem>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/Jobs">
+            Jobs
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            className="nav-link"
+            to="/profile"
+          >{`${currentUser.username} Profile `}</NavLink>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/" onClick={logout}>
+            Log Out
+          </Link>
+        </li>
       </>
     );
   }
   function loggedOutNav() {
     return (
       <>
-        <NavItem>
-          <NavLink to="/login">Log In</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </NavItem>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/login">
+            Log In
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/signup">
+            Sign Up
+          </NavLink>
+        </li>
       </>
     );
   }
-  console.log(currentUser, "hey");
+
   return (
-    <div>
-      <Navbar
-        className="navbar navbar-light"
-        style={{ backgroundColor: "#e3f2fd" }}
-      >
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div className="container-fluid">
         <NavLink exact to="/" className="navbar-brand">
           Jobly
         </NavLink>
-        <Nav navbar>{currentUser ? loggedInNav() : loggedOutNav()}</Nav>
-      </Navbar>
-    </div>
+        <ul className="navbar-nav">
+          {currentUser ? loggedInNav() : loggedOutNav()}
+        </ul>
+      </div>
+    </nav>
   );
 }
 

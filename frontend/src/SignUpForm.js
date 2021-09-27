@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import "./Center.css";
+import "./SignUpForm.css";
 const SignUpForm = ({ signUp }) => {
   const history = useHistory();
-  // TODO WHERE TO SEND DATA
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -29,63 +31,67 @@ const SignUpForm = ({ signUp }) => {
   };
 
   return (
-    <div>
-      <h1>Signup</h1>
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label htmlFor="username">Username:</Label>
-          <Input
-            sm={4}
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor="password">Password:</Label>
-          <Input
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor="firstName">First name:</Label>
-          <Input
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor="last">Last name:</Label>
-          <Input
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor="email">Email:</Label>
-          <Input
-            id="email"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </FormGroup>
-        <Button color="link">Sign Up!</Button>
-      </Form>
+    <div className="Center SignUpForm m-3">
+      <div className="text-center container">
+        <Form onSubmit={handleSubmit}>
+          <h1>Signup</h1>
+          <FormGroup>
+            <Label htmlFor="username">Username:</Label>
+            <Input
+              sm={4}
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="password">Password:</Label>
+            <Input
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="firstName">First name:</Label>
+            <Input
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="last">Last name:</Label>
+            <Input
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="email">Email:</Label>
+            <Input
+              id="email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </FormGroup>
+          <Button color="info" className="m-3">
+            Sign Up!
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 };
