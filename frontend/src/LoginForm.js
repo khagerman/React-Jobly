@@ -50,7 +50,9 @@ const LoginForm = ({ login }) => {
             />
           </FormGroup>
 
-          <Button color="info">Login!</Button>
+          <Button className="m-2" color="info">
+            Login!
+          </Button>
         </Form>
       </div>
     </div>
