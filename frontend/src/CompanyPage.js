@@ -36,8 +36,20 @@ function CompanyPage({ apply, currentUser }) {
           <JobCard
             apply={apply}
             title={job.title}
-            salary={job.salary}
-            equity={job.equity}
+            salary={
+              job.salary ? (
+                job.salary.toLocaleString()
+              ) : (
+                <span className="text-warning">Not Available</span>
+              )
+            }
+            equity={
+              job.equity ? (
+                job.equity
+              ) : (
+                <span className="text-warning">Not Available</span>
+              )
+            }
             id={job.id}
             currentUser={currentUser}
           />

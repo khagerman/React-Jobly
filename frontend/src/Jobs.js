@@ -37,7 +37,7 @@ function Jobs({ apply, currentUser }) {
   return (
     <div>
       <div className="container text-center">
-        <h2>Available Jobs</h2>
+        <h1 className="display-4">Available Jobs</h1>
         <Search search={search} />
         {jobs.length !== 0 ? (
           <div className="row">
@@ -47,8 +47,20 @@ function Jobs({ apply, currentUser }) {
                 id={job.id}
                 apply={apply}
                 title={job.title}
-                salary={job.salary}
-                equity={job.equity}
+                salary={
+                  job.salary ? (
+                    job.salary.toLocaleString()
+                  ) : (
+                    <span className="text-warning">Not Available</span>
+                  )
+                }
+                equity={
+                  job.equity ? (
+                    job.equity
+                  ) : (
+                    <span className="text-warning">Not Available</span>
+                  )
+                }
               />
             ))}
           </div>

@@ -17,7 +17,7 @@ function Search({ search }) {
   }
 
   return (
-    <form className="form-inline" onSubmit={handleSubmit}>
+    <form className="form-inline m-3" onSubmit={handleSubmit}>
       <div className="form-group">
         <input
           className="form-control"

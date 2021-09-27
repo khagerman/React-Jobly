@@ -14,7 +14,7 @@ function CompanyBox({ name, handle, description }) {
   return (
     <>
       <section>
-        <Card className="mb-5">
+        <Card className="bg-white mb-5">
           <CardBody>
             <CardTitle className="h4 font-weight-bold text-muted text-center">
               <Link className="stretched-link" to={`/companies/${handle}`}>

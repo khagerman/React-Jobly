@@ -3,17 +3,19 @@ import { Card, CardBody, CardTitle, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./Center.css";
 import "./Home.css";
+import logo from "./logo.svg";
 function Home({ currentUser }) {
   return (
     <div className="Home Center">
       <div className="container text-center">
-        <Card>
+        <Card className="bg-white">
           <CardBody className="text-center">
             <CardTitle>
               <h1 className="display-1 mb-4">Jobly</h1>
             </CardTitle>
-
+            <img src={logo} className="mb-3" />
             <h3>All the jobs in one, convenient place.</h3>
+
             {!currentUser ? (
               <div>
                 <Link to={`/signup`} className="btn btn-info">

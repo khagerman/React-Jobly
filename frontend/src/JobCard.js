@@ -9,7 +9,7 @@ function JobCard({ apply, id, title, salary, equity, currentUser }) {
   console.log(jobs);
   return (
     <div>
-      <Card className="m-3">
+      <Card className="bg-white m-3">
         <CardBody>
           <CardTitle tag="h5">{title}</CardTitle>
           {/* <CardSubtitle tag="h6" className="mb-2 text-muted">

@@ -34,7 +34,7 @@ const SignUpForm = ({ signUp }) => {
     <div className="Center SignUpForm m-3">
       <div className="text-center container">
         <Form onSubmit={handleSubmit}>
-          <h1>Signup</h1>
+          <h1 className="display-4">Signup</h1>
           <FormGroup>
             <Label htmlFor="username">Username:</Label>
             <Input

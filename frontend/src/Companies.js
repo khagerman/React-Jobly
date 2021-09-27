@@ -20,7 +20,7 @@ function Companies({ companies, setCos }) {
 
   return (
     <div className="container text-center">
-      <h1>Companies</h1>
+      <h1 className="display-4">Companies</h1>
       <Search search={search} />
       {companies.length !== 0 ? (
         <div>
