@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import "../Center.css";
 import "./SignUpForm.css";
@@ -17,7 +17,7 @@ const SignUpForm = ({ signUp }) => {
   async function handleSubmit(evt) {
     evt.preventDefault();
     await signUp(formData);
-    console.log(formData);
+
     history.push("/companies");
   }
   // get data from form and make into object

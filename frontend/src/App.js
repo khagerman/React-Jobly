@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import logo from "./logo.svg";
-import "./App.scss";
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Home from "./Home/Home";
 import Companies from "./Companies/Companies";
@@ -16,7 +14,6 @@ import jwt from "jsonwebtoken";
 import useLocalStorage from "./hooks/useLocalStorage";
 import "./bootstrap.css";
 
-// TODO ADD NOTIFICATIONS /FEEDBACK
 function App() {
   const [cos, setCos] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
@@ -32,7 +29,6 @@ function App() {
           let currentUser = await JoblyApi.getUser(username);
           setCurrentUser(currentUser);
         } catch (err) {
-          console.error("App loadUserInfo: problem loading", err);
           setCurrentUser(null);
         }
       }
@@ -70,12 +66,9 @@ function App() {
   async function apply(id) {
     let updatedUser = await JoblyApi.apply(currentUser.username, id);
     setCurrentUser(updatedUser);
-    // console.log(currentUser.applications);
-    // setApplied(new Set([...appliedJobs, id]));
   }
-  if (!infoLoaded) return <h3 className="info">Loading...</h3>;
+  if (!infoLoaded) return <h3 className="p-3 text-center info">Loading...</h3>;
   return (
-    // TODO put in seperate route
     <div className="App">
       <BrowserRouter>
         <NavBar logout={logOut} currentUser={currentUser} />

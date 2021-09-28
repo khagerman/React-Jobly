@@ -1,7 +1,7 @@
 import React from "react";
 
 import { NavLink, Link } from "react-router-dom";
-import { Navbar, Nav, NavItem } from "reactstrap";
+
 import logo from "./logo.svg";
 function NavBar({ currentUser, logout }) {
   function loggedInNav() {
@@ -49,10 +49,10 @@ function NavBar({ currentUser, logout }) {
   }
 
   return (
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-md navbar-dark bg-primary">
       <div className="container-fluid">
         <NavLink exact to="/" className="display-2 navbar-brand">
-          <img className="icon" src={logo} />
+          <img className="icon" src={logo} alt="magnify glass with briefcase" />
           Jobly
         </NavLink>
         <ul className="navbar-nav">

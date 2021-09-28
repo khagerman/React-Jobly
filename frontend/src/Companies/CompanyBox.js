@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  Button,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
+import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import { Link } from "react-router-dom";
 
 function CompanyBox({ name, handle, description }) {

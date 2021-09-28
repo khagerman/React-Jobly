@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import JoblyApi from "../api";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  Button,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
-import { Link, useParams } from "react-router-dom";
+
+import { useParams } from "react-router-dom";
 import JobCard from "../Jobs/JobCard";
 
 function CompanyPage({ apply, currentUser }) {
@@ -20,13 +13,13 @@ function CompanyPage({ apply, currentUser }) {
   useEffect(() => {
     async function getData() {
       let companyData = await JoblyApi.getCompany(handle);
-      console.log(companyData);
+
       setCo(companyData);
     }
     getData();
   }, [handle]);
-  console.log(co);
-  if (!co) return <h3>Loading...</h3>;
+
+  if (!co) return <h3 className="text-center">Loading...</h3>;
   return (
     <div className="container text-center p-2">
       <h2>{co.name}</h2>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, CardTitle, Button } from "reactstrap";
+import { Card, CardBody, CardTitle } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../Center.css";
 import "./Home.css";
@@ -13,7 +13,11 @@ function Home({ currentUser }) {
             <CardTitle>
               <h1 className="display-1 mb-4">Jobly</h1>
             </CardTitle>
-            <img src={logo} className="mb-3" />
+            <img
+              src={logo}
+              className="mb-3"
+              alt="magnify glass with briefcase"
+            />
             <h3>All the jobs in one, convenient place.</h3>
 
             {!currentUser ? (

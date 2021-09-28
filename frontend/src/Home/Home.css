@@ -1,6 +1,7 @@
 .card {
   background-color: #f7f7f7;
   border: 0;
+  position: relative;
 }
 img {
   height: 4rem;

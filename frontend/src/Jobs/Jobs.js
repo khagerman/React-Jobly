@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  Button,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
-import { useHistory } from "react-router-dom";
-import CardBox from "../Companies/CompanyBox";
 import Search from "../Search";
 import JoblyApi from "../api";
 import JobCard from "./JobCard";
@@ -17,8 +7,6 @@ import "../Center.css";
 
 function Jobs({ apply, currentUser }) {
   const [jobs, setJobs] = useState([]);
-  const history = useHistory();
-  // todo update
 
   useEffect(() => {
     async function getData() {
@@ -31,8 +19,8 @@ function Jobs({ apply, currentUser }) {
   async function search(searchTerm) {
     setJobs(await JoblyApi.searchJobs(searchTerm));
   }
-  //   TODO FIX
-  if (!jobs) return <h3>Loading...</h3>;
+
+  if (!jobs) return <h3 className="text-center">Loading...</h3>;
 
   return (
     <div>

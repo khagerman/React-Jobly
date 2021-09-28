@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  Button,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
-import { Link, useHistory } from "react-router-dom";
+
 import CardBox from "./CompanyBox";
 import Search from "../Search";
 import JoblyApi from "../api";
@@ -15,8 +7,6 @@ function Companies({ companies, setCos }) {
   async function search(searchTerm) {
     setCos(await JoblyApi.searchCompanies(searchTerm));
   }
-  //   TODO fix
-  //   if (!companies) return <h3>Loading...</h3>;
 
   return (
     <div className="container text-center">

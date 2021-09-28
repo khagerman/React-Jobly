@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import "./Center.css";
 const Profile = ({ currentUser, updateUser }) => {
   const history = useHistory();
-  // TODO WHERE TO SEND DATA
-  console.log(currentUser);
 
   const [formData, setFormData] = useState({
     firstName: currentUser.firstName,
@@ -19,7 +17,7 @@ const Profile = ({ currentUser, updateUser }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     updateUser(currentUser.username, formData);
-    console.log(formData);
+
     history.push("/companies");
   };
   // get data from form and make into object

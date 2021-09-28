@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom";
-import { InputGroup } from "reactstrap";
+import React, { useState } from "react";
 
 function Search({ search }) {
   const [formData, setFormData] = useState("");
   function handleSubmit(evt) {
     evt.preventDefault();
-    // console.log(`SEARCH ${formData}`);
-    // JoblyApi.search(formData);
+
     if (formData !== "") search(formData);
     setFormData("");
   }
