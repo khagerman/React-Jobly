@@ -31,9 +31,11 @@ const Profile = ({ currentUser, updateUser }) => {
   };
 
   return (
-    <div className="Center">
-      <div className="text-center container">
-        <h1 className="display-4">Hey, {currentUser.username}</h1>
+    <div>
+      <div className="text-center container position-relative">
+        <h1 className="display-4 position-relative">
+          Hey, {currentUser.username}
+        </h1>
         <Form onSubmit={handleSubmit}>
           <FormGroup>
             <Label htmlFor="username">Username:</Label>

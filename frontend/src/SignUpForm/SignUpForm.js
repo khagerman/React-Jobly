@@ -31,7 +31,7 @@ const SignUpForm = ({ signUp }) => {
   };
 
   return (
-    <div className="Center SignUpForm m-3">
+    <div className="Center SignUpForm mt-5">
       <div className="text-center container">
         <Form onSubmit={handleSubmit}>
           <h1 className="display-4">Signup</h1>

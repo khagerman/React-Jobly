@@ -24,7 +24,7 @@ const LoginForm = ({ login }) => {
   };
 
   return (
-    <div className="Center LoginForm m-3">
+    <div className="Center LoginForm m-5">
       <div className="text-center container-fluid">
         <Form onSubmit={handleSubmit}>
           <h1 className="text-center display-4">Login</h1>
